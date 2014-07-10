@@ -18,7 +18,7 @@ namespace CRMLight.API
         }
 
         // GET api/<controller>/5
-        public Customer Get(int id)
+        public Customer Get(Guid id)
         {
             Customer c = _customers.Get(id);
             if (c == null)
@@ -46,7 +46,7 @@ namespace CRMLight.API
         }
 
         // DELETE api/<controller>/5
-        public Customer Delete(int id)
+        public Customer Delete(Guid id)
         {
             Customer c = _customers.Get(id);
             _customers.Remove(id);

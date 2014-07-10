@@ -8,9 +8,9 @@ namespace CRMLight.Models
     public interface ICustomerRepository
     {
         IEnumerable<Customer> GetAll();
-        Customer Get(int id);
+        Customer Get(Guid id);
         Customer Add(Customer item);
-        void Remove(int id);
+        void Remove(Guid id);
         bool Update(Customer item);
     }
     public class CustomerRepository : ICustomerRepository
@@ -27,7 +27,7 @@ namespace CRMLight.Models
             return _db.Customers;
         }
 
-        public Customer Get(int id)
+        public Customer Get(Guid id)
         {
             return _db.Customers.Find(id);
         }
@@ -41,7 +41,7 @@ namespace CRMLight.Models
    
         }
 
-        public void Remove(int id)
+        public void Remove(Guid id)
         {
             Customer customer = _db.Customers.Find(id);
             _db.Customers.Remove(customer);

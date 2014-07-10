@@ -95,7 +95,7 @@
                     type: 'GET',
                     dataType: 'json',
                     success: function (customer) {
-                        $('#Customer').html('<li>(' + customer.CustomerID + ') FirstName=' + customer.FirstName + ' Email=' + customer.Email + '</li>');
+                        $('#Customer').html('<li>(' + customer.ID + ') FirstName=' + customer.FirstName + ' Email=' + customer.Email + '</li>');
                     },
                     error: function (x, y, z) {
                         $('#Customer').html(z);
@@ -118,7 +118,7 @@
                 data: JSON.stringify(customer),
                 contentType: "application/json;charset=utf-8",
                 success: function (data) {
-                    $('#NewCustomer').html('<li>(' + data.CustomerID + ') FirstName=' + data.FirstName + ' Email=' + data.Email + '</li>');
+                    $('#NewCustomer').html('<li>(' + data.ID + ') FirstName=' + data.FirstName + ' Email=' + data.Email + '</li>');
                 },
                 error: function (x, y, z) {
                     alert(x + '\n' + y + '\n' + z);
@@ -128,7 +128,7 @@
 
         function DeleteEmployee() {
             jQuery.support.cors = true;
-            var id = $('#txtCustID').val()
+            var id = $('#txtCustID').val();
 
             $.ajax({
                 url: 'api/Customers/' + id,
