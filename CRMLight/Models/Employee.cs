@@ -16,7 +16,6 @@ namespace CRMLight.Models
     {
         public Employee()
         {
-            this.Addresses = new HashSet<Address>();
             this.Opportunities = new HashSet<Opportunity>();
         }
     
@@ -33,7 +32,6 @@ namespace CRMLight.Models
         public string Website { get; set; }
         public string Notes { get; set; }
     
-        public virtual ICollection<Address> Addresses { get; set; }
         public virtual ICollection<Opportunity> Opportunities { get; set; }
     }
 }

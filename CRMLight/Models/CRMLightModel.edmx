@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CRMLightModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CRMLightModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -83,7 +83,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="None" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Company" Type="nvarchar" MaxLength="50" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
           <Property Name="LastName" Type="nvarchar" MaxLength="50" />
@@ -137,18 +137,6 @@
           <End Role="Addresses" Type="Self.Addresses" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customers">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Addresses">
-              <PropertyRef Name="Associate_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Addresses_Employees">
-          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
-          <End Role="Addresses" Type="Self.Addresses" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employees">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Addresses">
@@ -251,10 +239,6 @@
             <End Role="Customers" EntitySet="Customers" />
             <End Role="Addresses" EntitySet="Addresses" />
           </AssociationSet>
-          <AssociationSet Name="FK_Addresses_Employees" Association="Self.FK_Addresses_Employees">
-            <End Role="Employees" EntitySet="Employees" />
-            <End Role="Addresses" EntitySet="Addresses" />
-          </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -280,8 +264,7 @@
             <End Role="Opportunities" EntitySet="Opportunities" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CRMLightModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -308,7 +291,6 @@
           <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Associate_ID" Type="Guid" Nullable="false" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_Addresses_Customers" FromRole="Addresses" ToRole="Customers" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Addresses_Employees" FromRole="Addresses" ToRole="Employees" />
         </EntityType>
         <EntityType Name="AspNetRole">
           <Key>
@@ -394,7 +376,6 @@
           <Property Name="Fax" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="Website" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Addresses" Relationship="Self.FK_Addresses_Employees" FromRole="Employees" ToRole="Addresses" />
           <NavigationProperty Name="Opportunities" Relationship="Self.FK_Opportunities_Employees" FromRole="Employees" ToRole="Opportunities" />
         </EntityType>
         <EntityType Name="Opportunity">
@@ -423,18 +404,6 @@
           <End Role="Addresses" Type="Self.Address" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customers">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Addresses">
-              <PropertyRef Name="Associate_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Addresses_Employees">
-          <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
-          <End Role="Addresses" Type="Self.Address" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employees">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Addresses">
@@ -510,10 +479,6 @@
           <EntitySet Name="Opportunities" EntityType="Self.Opportunity" />
           <AssociationSet Name="FK_Addresses_Customers" Association="Self.FK_Addresses_Customers">
             <End Role="Customers" EntitySet="Customers" />
-            <End Role="Addresses" EntitySet="Addresses" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Addresses_Employees" Association="Self.FK_Addresses_Employees">
-            <End Role="Employees" EntitySet="Employees" />
             <End Role="Addresses" EntitySet="Addresses" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">

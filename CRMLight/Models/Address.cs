@@ -24,6 +24,5 @@ namespace CRMLight.Models
         public System.Guid Associate_ID { get; set; }
     
         public virtual Customer Customer { get; set; }
-        public virtual Employee Employee { get; set; }
     }
 }

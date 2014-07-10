@@ -15,7 +15,6 @@
         <EntityTypeShape EntityType="CRMLightModel.Employee" Width="1.5" PointX="0.75" PointY="14.25" IsExpanded="true" />
         <EntityTypeShape EntityType="CRMLightModel.Opportunity" Width="1.5" PointX="6" PointY="9" IsExpanded="true" />
         <AssociationConnector Association="CRMLightModel.FK_Addresses_Customers" ManuallyRouted="false" />
-        <AssociationConnector Association="CRMLightModel.FK_Addresses_Employees" ManuallyRouted="false" />
         <AssociationConnector Association="CRMLightModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="CRMLightModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="CRMLightModel.FK_Opportunities_Customers" ManuallyRouted="false" />
