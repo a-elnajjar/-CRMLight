@@ -30,6 +30,7 @@ namespace CRMLight.API
         // POST api/<controller>
         public Customer Post(Customer customer)
         {
+            customer.ID = Guid.NewGuid();
             return _customers.Add(customer);
 
         }

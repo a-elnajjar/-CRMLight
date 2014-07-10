@@ -75,7 +75,7 @@
                 success: function (customers) {
                     $('#Customers').html('');
                     $.each(customers, function (index, customer) {
-                        $('#Customers').append('<li>(' + customer.CustomerID + ') FirstName=' + customer.FirstName + ' Email=' + customer.Email + '</li>');
+                        $('#Customers').append('<li>(' + customer.ID + ') FirstName=' + customer.FirstName + ' Email=' + customer.Email + '</li>');
                     });
 
                 },

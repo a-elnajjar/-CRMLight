@@ -34,7 +34,7 @@ namespace CRMLight.Models
 
         public Customer Add(Customer customer)
         {
-
+           
             _db.Customers.Add(customer);
             _db.SaveChanges();
             return customer;
